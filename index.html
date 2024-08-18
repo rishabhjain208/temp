@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Vinnu!</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #ff99cc, #ff66cc);
+        color: #4b0082;
+        text-align: center;
+        padding: 50px;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        animation: textGlow 2s ease-in-out infinite alternate;
+        color: #ffffff;
+        text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff33cc;
+      }
+
+      @keyframes textGlow {
+        from {
+          text-shadow: 0 0 10px #ff33cc, 0 0 20px #ff33cc;
+        }
+        to {
+          text-shadow: 0 0 20px #ff33cc, 0 0 40px #ff33cc;
+        }
+      }
+
+      .birthday-card {
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        padding: 40px;
+        max-width: 100%;
+        margin: 20px auto;
+        transition: transform 0.3s ease-in-out;
+        display: none; /* Hidden by default */
+        animation: slideIn 1s ease-in-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .birthday-card.show {
+        display: block; /* Show when triggered */
+      }
+
+      .birthday-card img {
+        width: 100%;
+        max-width: 400px; /* Maximum size for larger screens */
+        height: auto;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .birthday-card img:hover {
+        transform: scale(1.05);
+      }
+
+      .message {
+        font-size: 1.7em;
+        margin-top: 20px;
+        color: #ff33cc;
+      }
+
+      .surprise-button {
+        margin-top: 30px;
+        padding: 15px 30px;
+        font-size: 1.5em;
+        color: #ffffff;
+        background: linear-gradient(135deg, #c30684, #470135);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .surprise-button:hover {
+        background-color: #ff3399;
+        transform: scale(1.1);
+      }
+
+      .surprise-message {
+        display: none;
+        font-size: 2em;
+        margin-top: 20px;
+        color: #ff3399;
+        animation: bounce 0.5s ease-in-out infinite alternate;
+      }
+
+      @keyframes bounce {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-10px);
+        }
+      }
+
+      .confetti {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      .confetti div {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: #d70691;
+        animation: confetti-fall 5s infinite ease-in-out;
+        opacity: 0.7;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5em;
+        }
+
+        .message {
+          font-size: 1.3em;
+        }
+
+        .surprise-button {
+          font-size: 1.2em;
+          padding: 12px 24px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        .message {
+          font-size: 1.1em;
+        }
+
+        .surprise-button {
+          font-size: 1em;
+          padding: 10px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Happy Birthday Vinnu!</h1>
+    <button class="surprise-button" onclick="showSurprise()">
+      Click for a Surprise!
+    </button>
+    <div class="birthday-card" id="birthdayCard">
+      <img src="img.jpg" alt="Happy Birthday Vinnu" />
+      <p class="message">
+        Dear Vinnu, wishing you a day filled with love, laughter, and endless
+        joy. May all your dreams come true! Have an amazing birthday!
+      </p>
+      <div class="surprise-message" id="surpriseMessage">
+        🎉 Surprise! You're amazing, Vinnu! 🎉
+      </div>
+    </div>
+
+    <div class="confetti" id="confetti"></div>
+
+    <script>
+      function showSurprise() {
+        document.getElementById("birthdayCard").classList.add("show");
+        document.getElementById("surpriseMessage").style.display = "block";
+        launchConfetti();
+      }
+
+      function launchConfetti() {
+        const confettiContainer = document.getElementById("confetti");
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement("div");
+          confetti.style.left = `${Math.random() * 100}vw`;
+          confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+          confettiContainer.appendChild(confetti);
+        }
+      }
+    </script>
+  </body>
+</html>
